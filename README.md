@@ -38,8 +38,6 @@ main()
   generally `import.meta.url` or `document.currentScript`,
   add this if you want to load a file relative to the current path,
   the url is loaded relative to this path
-```
-
 
 ### Examples
 
