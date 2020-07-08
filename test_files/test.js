@@ -1,0 +1,1 @@
+window.some_random_variable_thingy_wow = 213123423
