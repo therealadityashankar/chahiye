@@ -30,3 +30,20 @@ describe('test js file loading', () => {
     await chahiye.load("script", "./test_files/test.js", import.meta.url)
   })
 });
+
+
+describe('test js file loading with full url, without base parameter', () => {
+  const fileurl = "https://codemirror.net/lib/codemirror.js"
+  it('test loading file', async () => {
+    await chahiye.load("script", fileurl)
+    chai.assert(window.CodeMirror !== undefined); 
+  })
+
+  it('test file multiple loading', async function (){
+    this.timeout(5);
+    await chahiye.load("script", fileurl)
+    await chahiye.load("script", fileurl)
+    await chahiye.load("script", fileurl)
+    await chahiye.load("script", fileurl)
+  })
+})
