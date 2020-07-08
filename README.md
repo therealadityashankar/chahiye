@@ -42,4 +42,4 @@ main()
 ### Examples
 
 - `chahiye.load("linkCSS", "./test_files/test.blue.css", import.meta.url)`
-- `chahiye.load("linkCSS", "https://codemirror.net/lib/codemirror.js")`
+- `chahiye.load("script", "https://codemirror.net/lib/codemirror.js")`
