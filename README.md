@@ -3,6 +3,8 @@ want a resource ?, ask for the resource when you need it
 
 - "chahiye" is the hindi word for "do you want ?"
 
+chahiye allows you to load css and script files, dynamically, and ensures they're not doubly loaded
+
 esmodule import
 ---------------
 `import chahiye from "https://cdn.jsdelivr.net/gh/therealadityashankar/chahiye@0/chahiye.js"`
@@ -37,3 +39,9 @@ main()
   add this if you want to load a file relative to the current path,
   the url is loaded relative to this path
 ```
+
+
+### Examples
+
+- `chahiye.load("linkCSS", "./test_files/test.blue.css", import.meta.url)`
+- `chahiye.load("linkCSS", "https://codemirror.net/lib/codemirror.js")`
