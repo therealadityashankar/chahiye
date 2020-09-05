@@ -24,7 +24,7 @@ async function addIfRequired(type, callback, _url, base) {
 
   if (typeStuff[url.href]) {
     if (typeStuff[url.href].completed) return typeStuff[url.href].value 
-    else return typeStuff[url.href].promise
+    else return await typeStuff[url.href].promise
   }
 
   typeStuff[url.href] = {
