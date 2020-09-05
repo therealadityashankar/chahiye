@@ -36,6 +36,7 @@ async function addIfRequired(type, callback, _url, base) {
 
   typeStuff[url.href].completed = true
   typeStuff[url.href].value = value
+  return value
 }
 
 
@@ -67,7 +68,8 @@ function addScriptIfRequired (_url, base) {
     document.body.appendChild(script)
 
     return new Promise(resolve => {
-      script.addEventListener('load', resolve)
+      script.addEventListener('load', 
+                              event => resolve({script, loadEvent: event}))
     })
   }
 
@@ -87,7 +89,10 @@ function addCSSLinkIfRequired (_url, base) {
     link.setAttribute('href', url.href)
     document.body.appendChild(link)
 
-    return new Promise(resolve => link.addEventListener('load', resolve))
+    return new Promise(resolve => {
+      link.addEventListener('load', 
+                            event => resolve({link, loadEvent:event}))
+    })
   }
 
   return addIfRequired("linkCSS", addFn, _url, base)

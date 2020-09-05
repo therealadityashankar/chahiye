@@ -39,6 +39,8 @@ main()
   add this if you want to load a file relative to the current path,
   the url is loaded relative to this path
 
+- ***returns*** : object, {link/script, loadEvent}, where link/script is the link or script tag (in a variable called 'link' or 'script', and loadEvent is the event from the "load" event of the tag)
+
 ### Examples
 
 - `chahiye.load("linkCSS", "./test_files/test.blue.css", import.meta.url)`

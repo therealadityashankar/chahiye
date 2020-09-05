@@ -2,17 +2,22 @@ import chahiye from "./chahiye.js"
 
 describe('test css file loading', () => {
   it('test loading file', async () => {
-    const file = await chahiye.load("linkCSS", "./test_files/test.blue.css", import.meta.url)
+    const {link} = await chahiye.load("linkCSS", "./test_files/test.blue.css", import.meta.url)
     const value = getComputedStyle(document.documentElement).getPropertyValue("--this-is-brown")
     chai.assert(value === " brown");
+    chai.assert(link.href === "http://0.0.0.0:8000/test_files/test.blue.css")
   });
 
   it('test file multiple loading', async function (){
     this.timeout(5);
-    await chahiye.load("linkCSS", "./test_files/test.blue.css", import.meta.url)
-    await chahiye.load("linkCSS", "./test_files/test.blue.css", import.meta.url)
-    await chahiye.load("linkCSS", "./test_files/test.blue.css", import.meta.url)
-    await chahiye.load("linkCSS", "./test_files/test.blue.css", import.meta.url)
+    const {link:link1} = await chahiye.load("linkCSS", "./test_files/test.blue.css", import.meta.url)
+    const {link:link2} = await chahiye.load("linkCSS", "./test_files/test.blue.css", import.meta.url)
+    const {link:link3} = await chahiye.load("linkCSS", "./test_files/test.blue.css", import.meta.url)
+    const {link:link4} = await chahiye.load("linkCSS", "./test_files/test.blue.css", import.meta.url)
+
+    chai.assert(link1 === link2)
+    chai.assert(link1 === link3)
+    chai.assert(link1 === link4)
   })
 });
 
